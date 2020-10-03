@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
     set_product_column # private内に定義したメソッドを実行
+    set_category_column # private内に定義したメソッドを実行
   end
 
   def search
@@ -19,6 +20,12 @@ class ProductsController < ApplicationController
 
   def set_product_column
     @product_name = Product.select("name").distinct # 重複なくnameカラムのデータを取り出す
+    @product_size = Product.select("size").distinct # 重複なくnameカラムのデータを取り出す
+    @product_status = Product.select("status").distinct # 重複なくnameカラムのデータを取り出す
   end
-  
+
+  def set_category_column
+    category_name = Category.select("name").distinct
+  end
+
 end
