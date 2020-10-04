@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def set_category_column
-    category_name = Category.select("name").distinct
+    @category_name = Category.select("name").distinct
   end
 
 end
